@@ -20,12 +20,16 @@ class Student {
   }
   /////////////////////////////////////////
   get Average() {
-    let averMark = 0;
-    this.marks.reduce(function (acc, cur) {
-      return (averMark = acc + cur);
-    });
-    averMark = averMark / this.marks.length;
-    return averMark;
+    if ((this.studentIsDismissed = false)) {
+      let averMark = 0;
+      this.marks.reduce(function (acc, cur) {
+        return (averMark = acc + cur);
+      });
+      averMark = averMark / this.marks.length;
+      return averMark;
+    } else {
+      return null;
+    }
   }
   /////////////////////////////////////////
   dissmis() {
@@ -59,6 +63,7 @@ console.log(`Dismissed stud:`, stud1.dissmis());
 console.log(`Marks of dismissed student:`, stud1.Marks);
 stud1.Marks = 5;
 console.log(`Marks:`, stud1.Marks);
+console.log(`Average mark:`, stud1.Average);
 
 console.log(`Recovered student:`, stud1.recover());
 console.log(`Marks of recovered student:`, stud1.marks);
